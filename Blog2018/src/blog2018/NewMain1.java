@@ -31,6 +31,14 @@ public class NewMain1 {
         set.add(c1);
         set.add(c2);
         System.out.println(set);
+        
+        CommentComparator cc = new CommentComparator();
+        TreeSet set2 = new TreeSet(cc);
+        set2.add(c);
+        set2.add(c1);
+        set2.add(c2);
+        System.out.println(set2);        
+        
     }
     
 }

@@ -4,7 +4,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class Blog {
     private List<Note> notes = new ArrayList();
@@ -84,7 +89,23 @@ public class Blog {
     }
     public List<Comment> lastComments()
     {
-        return null;
+        SortedSet<Comment> allComments = new TreeSet(Collections.reverseOrder());
+        for(Note note: notes)
+        {
+            allComments.addAll(note.getComments());
+        }
+        Collection<Comment> result = new ArrayList();
+        Iterator<Comment> it = allComments.iterator();
+        for(int i = 0; i<5;i++)
+        {
+            if(it.hasNext()){
+                Comment c = it.next();
+                result.add(c);
+            }
+        }
+        
+
+        return result;
     }
 
 }
